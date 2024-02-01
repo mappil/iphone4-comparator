@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>iPhone 4 Comparator</h1>
+
+<div class="container">
+  <form action="" id="form">
+    <label for="fheight">Quanto sei alto? (in centimetri)</label>
+    <input type="number" id="fheight" name="height" placeholder="175">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<div class="container">
+    <h3 id="lresult"></h3>
+    <div id="placehere"></div>
+  </div>
+
+  
+<script>
+    let iphone4Size = 0.93
+    let form = document.getElementById("form");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let height = parseInt(document.getElementById("fheight").value);
+        if (isNumber(height) && height > 0) {
+            console.log(height);
+            let value = parseInt(height / iphone4Size);
+            document.getElementById("lresult").innerHTML = "Sei alto come <b>" + value + "</b> iPhone 4 Piatti";
+            document.getElementById("placehere").innerHTML = "";
+            for (i = 0; i < value; i++) {
+                var elem = document.createElement("img");
+                elem.setAttribute("src", "iphone4.png");
+                elem.setAttribute("height", "400");
+                elem.setAttribute("width", "100");
+                elem.setAttribute("alt", "Flower");
+                document.getElementById("placehere").appendChild(elem);
+            }
+        }
+  // handle submit
+});
+
+function isNumber(value) {
+  return typeof value === 'number';
+}
+</script>
+</body>
+</html>
